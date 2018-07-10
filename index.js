@@ -5,3 +5,16 @@
  * in english language to that in the equivalent braille
  * code.
  */
+import englishToBrailleLiteralSet from './english-to-braille.js';
+
+const mapBraille = new Map(englishToBrailleLiteralSet);
+
+function printText() {
+  const input = document.getElementById('sourceLangText').value;
+  let brStr = '';
+  for (let i = 0; i < input.length; i += 1) {
+    brStr += mapBraille.get(input[i]);
+  }
+  document.getElementById('targetLangText').innerHTML = brStr;
+}
+document.getElementById('btnConvertEnglishToBraille').addEventListener('click', printText);
