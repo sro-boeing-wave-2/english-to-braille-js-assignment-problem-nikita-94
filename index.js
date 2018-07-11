@@ -11,10 +11,8 @@ const mapBraille = new Map(englishToBrailleLiteralSet);
 
 function printText() {
   const input = document.getElementById('sourceLangText').value;
-  let brStr = '';
-  for (let i = 0; i < input.length; i += 1) {
-    brStr += mapBraille.get(input[i]);
-  }
-  document.getElementById('targetLangText').innerHTML = brStr;
+  const brStr = input.split('');
+  const map1 = brStr.map(x => mapBraille.get(x)).join('');
+  document.getElementById('targetLangText').innerHTML = map1;
 }
 document.getElementById('btnConvertEnglishToBraille').addEventListener('click', printText);
